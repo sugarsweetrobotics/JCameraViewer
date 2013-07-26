@@ -166,18 +166,18 @@ private BufferedImage img;
     protected ReturnCode_t onExecute(int ec_id) {
     	if (this.m_inIn.isNew()) {
     		m_inIn.read();
-    		System.out.println("Width  =" + m_in.v.width);
-    		System.out.println("Height =" + m_in.v.height);
+    		//System.out.println("Width  =" + m_in.v.width);
+    		//System.out.println("Height =" + m_in.v.height);
     		if (img == null) {
     			img = new BufferedImage(m_in.v.width, m_in.v.height, BufferedImage.TYPE_INT_RGB);
     		}
     		for (int y = 0;y < m_in.v.height;y++) {
     			for (int x = 0;x < m_in.v.width;x++) {
     				int index = y * m_in.v.width + x;
-    				byte r = m_in.v.pixels[index*3 + 2];
+    				byte r = m_in.v.pixels[index*3 + 0];
     				byte g = m_in.v.pixels[index*3 + 1];
-    				byte b = m_in.v.pixels[index*3 + 0];
-    				int rgb = (int)r << 16 | (int)g << 8 | (int)b;
+    				byte b = m_in.v.pixels[index*3 + 2];
+    				int rgb = (0x00FF & (int)r) << 16 | (0x00FF & (int)g) << 8 | (0x00FF & (int)b);
     				img.setRGB(x, y, rgb);
     			}
     		}
