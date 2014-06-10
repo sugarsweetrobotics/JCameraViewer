@@ -174,9 +174,9 @@ private BufferedImage img;
     		for (int y = 0;y < m_in.v.height;y++) {
     			for (int x = 0;x < m_in.v.width;x++) {
     				int index = y * m_in.v.width + x;
-    				byte r = m_in.v.pixels[index*3 + 0];
+    				byte r = m_in.v.pixels[index*3 + 2];
     				byte g = m_in.v.pixels[index*3 + 1];
-    				byte b = m_in.v.pixels[index*3 + 2];
+    				byte b = m_in.v.pixels[index*3 + 0];
     				int rgb = (0x00FF & (int)r) << 16 | (0x00FF & (int)g) << 8 | (0x00FF & (int)b);
     				img.setRGB(x, y, rgb);
     			}
